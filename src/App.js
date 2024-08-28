@@ -1,10 +1,21 @@
 import "./App.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function App() {
   const [name, setName] = useState("");
   const [datetime, setDatetime] = useState("");
   const [description, setDescription] = useState("");
+  const [transactions, setTransactions] = useState([]);
+  useEffect(() => {
+    getTransactions().then(setTransactions);
+  }, []);
+
+  async function getTransactions(){
+    const url = process.env.REACT_APP_API_URL + "/transactions";
+    const response = await fetch(url);
+    return await response.json();
+  }
+    
   function addNewTransaction(ev) {
     ev.preventDefault();
     const url = process.env.REACT_APP_API_URL + "/transaction";
@@ -27,11 +38,14 @@ function App() {
     });
   }
 
+  let bal=0;
+  for (const transaction of transactions) {
+    bal += transaction.price;
+  }
+
   return (
     <main>
-      <h1>
-        $400<span>.00</span>
-      </h1>
+      <h1>${bal}<span>.00</span></h1>
       <form onSubmit={addNewTransaction}>
         <div className="basic">
           <input
@@ -54,42 +68,21 @@ function App() {
         </div>
         <button type="submit">Add new transactions</button>
 
+
       </form>
       <div className="transactions">
-
-        <div className="transaction">
+        {transactions.length >0 && transactions.map(transaction =>(
+          <div className="transaction">
           <div className="left">
-            <div className="name">New Samsumg TV</div>
-            <div className="description">It was time for new tv</div>
+            <div className="name">{transaction.name}</div>
+            <div className="description">{transaction.description}</div>
           </div>
           <div className="right">
-            <div className="price red">-$200.00</div>
+            <div className="price red">{transaction.price}</div>
             <div className="datetime">20/09/2021 15:45</div>
           </div>
         </div>
-
-        <div className="transaction">
-          <div className="left">
-            <div className="name">Gig job new website</div>
-            <div className="description">gig new job website</div>
-          </div>
-          <div className="right">
-            <div className="price green">+$400.00</div>
-            <div className="datetime">20/09/2021 15:45</div>
-          </div>
-        </div>
-
-        <div className="transaction">
-          <div className="left">
-            <div className="name">Iphone </div>
-            <div className="description">It was time for new tv</div>
-          </div>
-          <div className="right">
-            <div className="price red">-$500.00</div>
-            <div className="datetime">20/09/2021 15:45</div>
-          </div>
-        </div>
-
+        ))}
       </div>
     </main>
   );
