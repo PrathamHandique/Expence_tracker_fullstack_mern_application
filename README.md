@@ -1,7 +1,4 @@
-navigate to 
-
-https://github.com/user-attachments/assets/56ad2e8a-be92-4ff5-8e85-e0a7d8ebd4ce
-for the implemetation video
+https://github.com/user-attachments/assets/5f72494f-9008-4991-9b6b-cbcaa4cdb7df
 
 # Getting Started with Create React App
 
