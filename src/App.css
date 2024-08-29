@@ -1,76 +1,116 @@
-*{
+/* Existing Styles */
+* {
   box-sizing: border-box;
 }
-body{
+body {
   background-color: #17181F;
-  color:#ddd;
+  color: #ddd;
 }
-main{
+main {
   max-width: 360px;
   margin: 30px auto;
 }
-h1{
+h1 {
   text-align: center;
-  color:#fff;
-  margin:0;
+  color: #fff;
+  margin: 0;
 }
-form{
+form {
   margin-top: 20px;
 }
-form input{
-  width:100%;
-  color:#ddd;
+form input {
+  width: 100%;
+  color: #ddd;
   background-color: transparent;
-  border:2px solid #30313d;
+  border: 2px solid #30313d;
   padding: 2px 5px;
   border-radius: 5px;
 }
-form input[type="datetime-local"]{
-  color:#777;
+form input[type="datetime-local"] {
+  color: #777;
 }
-form div.basic{
-  display:flex;
-  gap:5px;
+form div.basic {
+  display: flex;
+  gap: 5px;
   margin-bottom: 5px;
 }
-form button{
-  width:100%;
+form button {
+  width: 100%;
   background-color: #ddd;
   margin-top: 5px;
-  border:0;
+  border: 0;
   border-radius: 5px;
   padding: 5px;
 }
-div.transactions{
+div.transactions {
   margin-top: 10px;
 }
-div.transaction{
-  display:flex;
-  padding:5px 0;
+div.transaction {
+  display: flex;
+  padding: 5px 0;
   justify-content: space-between;
   border-top: 1px solid #30313d;
-
 }
-div.transaction:first-child{
+div.transaction:first-child {
   border-top: 0;
 }
-div.transaction div.description{
+div.transaction div.description {
   font-size: .7rem;
-  color:#888;
+  color: #888;
 }
-div.transaction div.name{
+div.transaction div.name {
   font-size: 1rem;
 }
-div.right{
+div.right {
   text-align: right;
 }
-div.price.green{
+div.price.green {
   color: #0f0;
 }
-div.price.red{
+div.price.red {
   color: #f00;
 }
-div.transaction div.datetime{
+div.transaction div.datetime {
   font-size: .7rem;
-  color:#888;
+  color: #888;
+}
+
+/* Additional Styles for Edit and Delete Buttons */
+div.transaction div.right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 5px;
+}
+
+div.transaction div.right button {
+  background-color: #30313d;
+  color: #ddd;
+  border: 1px solid #444;
+  padding: 2px 5px;
+  border-radius: 3px;
+  font-size: 0.7rem;
+  cursor: pointer;
+}
+
+div.transaction div.right button:hover {
+  background-color: #3c3d47;
+}
+
+div.transaction div.right button.edit-btn {
+  background-color: #009688;
+  border-color: #00796b;
+}
+
+div.transaction div.right button.edit-btn:hover {
+  background-color: #00796b;
+}
+
+div.transaction div.right button.delete-btn {
+  background-color: #f44336;
+  border-color: #d32f2f;
+}
+
+div.transaction div.right button.delete-btn:hover {
+  background-color: #d32f2f;
 }
